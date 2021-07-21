@@ -1,4 +1,4 @@
-name: code-builds-deploys
+name: codes-builds-deploys
 on:
   push:
     branches: [main, develop]
