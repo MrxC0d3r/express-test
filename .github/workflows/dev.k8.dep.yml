@@ -4,6 +4,7 @@ on:
     branches: [main, develop]
     paths:
       - 'package.json'
+      - 'index.js'
       - 'Dockerfile'
       - 'docker-compose.yml'
       - '.github/workflows/**'
