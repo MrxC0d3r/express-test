@@ -12,25 +12,50 @@ spec:
   selector:
     k8s-app: ikure-be-auth
 ---
-apiVersion: apps/v1
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: ikure-be-auth
+# spec: 
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: auth
+#   template:
+#     metadata:
+#       labels: 
+#         app: auth
+#     spec:
+#       containers:
+#         - name: ikure-be-auth
+#           image: registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth
+#       imagePullSecrets:
+#         - name: ikure-be-fe-1 
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: ikure-be-auth
-spec: 
+  namespace: default
+  labels:
+    k8s-app: ikure-be-auth
+spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      k8s-app: ikure-be-auth
   template:
     metadata:
-      labels: 
-        app: auth
+      name: ikure-be-auth
+      labels:
+        k8s-app: ikure-be-auth
     spec:
       containers:
         - name: ikure-be-auth
-          image: registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth
-      imagePullSecrets:
-        - name: ikure-be-fe-1 
+          image: 'registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth'
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            privileged: false
+      restartPolicy: Always
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
