@@ -29,8 +29,6 @@ spec:
       containers:
         - name: ikure-be-auth
           image: registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth
-          ports:
-          - containerPort: 5000
       imagePullSecrets:
         - name: ikure-be-fe-1 
 ---
