@@ -23,7 +23,7 @@ spec:
         app: auth
     spec:
       containers:
-        - name: auth-containers
+        - name: ikure-be-auth
           image: registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth 
       imagePullSecrets:
         - name: ikure-be-fe-1
