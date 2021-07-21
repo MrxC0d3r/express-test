@@ -36,7 +36,7 @@ jobs:
       run: docker push registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth:$(echo $GITHUB_SHA | head -c7)
 
     - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|auth-containers|registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth:'${TAG}'|' $GITHUB_WORKSPACE/docker-compose.yml
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|ikure.be-auth|registry.digitalocean.com/ikure-be-fe-1/ikure-be-auth:'${TAG}'|' $GITHUB_WORKSPACE/docker-compose.yml
 
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 dev-k8s-1-21-2-do-2-blr1-1625674837859
