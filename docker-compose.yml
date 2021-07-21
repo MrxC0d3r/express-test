@@ -6,7 +6,7 @@ spec:
     selector: 
       app: ikure
     ports:
-      protocol: TCP
+    - protocol: TCP
       port: 80
       targetPort: 5000
 ---
